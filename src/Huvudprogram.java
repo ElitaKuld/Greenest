@@ -3,16 +3,17 @@ import java.util.LinkedList;
 
 public class Huvudprogram {
     public static void main(String[] args) {
-        Plant igge = new Cactus("Igge", 0.2); // checka in växter
-        Plant laura = new Palm("Laura", 5);
-        Plant meatLoaf = new CarnivorousPlant("MeatLoaf", 0.7);
-        Plant putte = new Palm("Putte", 1);
+        Huvudprogram mainProgram = new Huvudprogram();
+        Plant plant1 = new Cactus("Igge", 0.2); // checka in växter
+        Plant plant2 = new Palm("Laura", 5);
+        Plant plant3 = new CarnivorousPlant("MeatLoaf", 0.7);
+        Plant plant4 = new Palm("Putte", 1);
 
-        LinkedList<Plant> allOurPlants = new LinkedList<>(); // lista över incheckade växter
-        allOurPlants.add(igge);
-        allOurPlants.add(laura);
-        allOurPlants.add(meatLoaf);
-        allOurPlants.add(putte);
+        LinkedList<Plant> allOurPlants = new LinkedList<>(); // skapa en lista över incheckade växter
+        allOurPlants.add(plant1);
+        allOurPlants.add(plant2);
+        allOurPlants.add(plant3);
+        allOurPlants.add(plant4);
 
         while (true) {
             String nameOfPlant = JOptionPane.showInputDialog("Vilken växt ska få vätska?");
@@ -23,21 +24,25 @@ public class Huvudprogram {
                 JOptionPane.showMessageDialog(null, "Namnet kan inte vara tomt.");
             } else {
                 nameOfPlant = nameOfPlant.trim(); // ta bort alla eventuella tomma tecken på sidorna
-                int thereIsSuchPlant = 0;
-                for (int i = 0; i < allOurPlants.size(); i++) {
-                    if (nameOfPlant.equalsIgnoreCase(allOurPlants.get(i).getName())) {
-                        JOptionPane.showMessageDialog(null, "Denna växt med namn " +
-                                allOurPlants.get(i).getName() + " behöver " +
-                                allOurPlants.get(i).waterMe() + " liter av " + // polymorfism
-                                allOurPlants.get(i).getTypeOfNutrientFluid().getSvenskBetydelse() + " per dag.");
-                        thereIsSuchPlant++;
-                    }
-                }
-                if (thereIsSuchPlant == 0)
-                    JOptionPane.showMessageDialog(null, "Okänt namn! " +
-                            "Denna växt är inte incheckad i vårt hotell.");
+                mainProgram.lookForPlant(nameOfPlant, allOurPlants);
             }
         }
+    }
+
+    public void lookForPlant(String nameOfPlant, LinkedList<Plant> listOfPlants) {
+        boolean thereIsSuchPlant = false;
+        for (int i = 0; i < listOfPlants.size(); i++) {
+            if (nameOfPlant.equalsIgnoreCase(listOfPlants.get(i).getName())) {
+                JOptionPane.showMessageDialog(null, "Denna växt med namn " +
+                        listOfPlants.get(i).getName() + " behöver " +
+                        listOfPlants.get(i).waterMe() + " liter av " + // polymorfism
+                        listOfPlants.get(i).getTypeOfNutrientFluid().getSvenskBetydelse() + " per dag.");
+                thereIsSuchPlant = true;
+            }
+        }
+        if (!thereIsSuchPlant)
+            JOptionPane.showMessageDialog(null, "Okänt namn! " +
+                    "Denna växt är inte incheckad i vårt hotell.");
     }
 }
 /*Dessa växter bor på hotellet:
@@ -50,5 +55,3 @@ public class Huvudprogram {
 bredvid. Ägaren fyller i växtens namn på tomma raden och programmet visar en ny ruta där det står
 hur många liter växten ska få samt vilken sorts vätska (kranvatten, mineralvatten eller proteindryck)
 som ska serveras.*/
-/*JOptionPane.showInputDialog("Namnet kan inte vara tomt. Vänligen ange namnet på växten som ska vattnas.");
-            nameOfPlant = JOptionPane.showInputDialog("Vilken växt ska få vätska?");*/
