@@ -1,9 +1,6 @@
-public class CarnivorousPlant extends Plant implements Waterable {
+public class CarnivorousPlant extends Plant {
 
     private NutrientFluid typeOfNutrientFluid = NutrientFluid.PROTEIN_DRINK;
-
-    public CarnivorousPlant() {
-    }
 
     public CarnivorousPlant(String name, double length) {
         super.setName(name);
@@ -20,6 +17,7 @@ public class CarnivorousPlant extends Plant implements Waterable {
         this.typeOfNutrientFluid = typeOfNutrientFluid;
     }
 
+    @Override
     public double waterMe() {
         return 0.1 + (super.getLength() * 0.2);
     }

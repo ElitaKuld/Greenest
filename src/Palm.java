@@ -1,9 +1,6 @@
-public class Palm extends Plant implements Waterable {
+public class Palm extends Plant {
 
     private NutrientFluid typeOfNutrientFluid = NutrientFluid.TAP_WATER;
-
-    public Palm() {
-    }
 
     public Palm(String name, double length) {
         super.setName(name);

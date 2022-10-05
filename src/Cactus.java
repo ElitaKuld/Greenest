@@ -1,9 +1,6 @@
-public class Cactus extends Plant implements Waterable {
+public class Cactus extends Plant {
 
     private NutrientFluid typeOfNutrientFluid = NutrientFluid.MINERAL_WATER;
-
-    public Cactus() {
-    }
 
     public Cactus(String name, double length) {
         super.setName(name);

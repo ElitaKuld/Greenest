@@ -3,12 +3,12 @@ import java.util.LinkedList;
 
 public class Huvudprogram {
     public static void main(String[] args) {
-        Cactus igge = new Cactus("Igge", 0.2); // incheckade växter
-        Palm laura = new Palm("Laura", 5);
-        CarnivorousPlant meatLoaf = new CarnivorousPlant("MeatLoaf", 0.7);
-        Palm putte = new Palm("Putte", 1);
+        Plant igge = new Cactus("Igge", 0.2); // checka in växter
+        Plant laura = new Palm("Laura", 5);
+        Plant meatLoaf = new CarnivorousPlant("MeatLoaf", 0.7);
+        Plant putte = new Palm("Putte", 1);
 
-        LinkedList<Plant> allOurPlants = new LinkedList<>();
+        LinkedList<Plant> allOurPlants = new LinkedList<>(); // lista över incheckade växter
         allOurPlants.add(igge);
         allOurPlants.add(laura);
         allOurPlants.add(meatLoaf);
@@ -19,17 +19,16 @@ public class Huvudprogram {
             if (nameOfPlant == null) {
                 JOptionPane.showMessageDialog(null, "Du har avbrutit programmet.");
                 break;
-            }
-            else if (nameOfPlant.equals("")) {
-                JOptionPane.showMessageDialog(null,"Namnet kan inte vara tomt.");
-            }
-            else {
+            } else if (nameOfPlant.equals("")) {
+                JOptionPane.showMessageDialog(null, "Namnet kan inte vara tomt.");
+            } else {
+                nameOfPlant = nameOfPlant.trim(); // ta bort alla eventuella tomma tecken på sidorna
                 int thereIsSuchPlant = 0;
                 for (int i = 0; i < allOurPlants.size(); i++) {
                     if (nameOfPlant.equalsIgnoreCase(allOurPlants.get(i).getName())) {
                         JOptionPane.showMessageDialog(null, "Denna växt med namn " +
                                 allOurPlants.get(i).getName() + " behöver " +
-                                allOurPlants.get(i).waterMe() + " liter av " +
+                                allOurPlants.get(i).waterMe() + " liter av " + // polymorfism
                                 allOurPlants.get(i).getTypeOfNutrientFluid().getSvenskBetydelse() + " per dag.");
                         thereIsSuchPlant++;
                     }
