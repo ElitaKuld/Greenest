@@ -6,7 +6,10 @@ class CarnivorousPlantTest {
 
     @Test
     void waterMe() {
-        assert(carnivorousPlant.waterMe() == 0.2);
-        assert(carnivorousPlant.waterMe() != 0);
+        assert (carnivorousPlant.waterMe() == 0.2);
+        assert (carnivorousPlant.waterMe() != 0);
+        carnivorousPlant.setLength(0.7);
+        assert (carnivorousPlant.waterMe() == 0.24);
+        assert (carnivorousPlant.waterMe() != 0.2);
     }
 }

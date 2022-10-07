@@ -22,4 +22,3 @@ public class Cactus extends Plant {
         return super.getLength() * 0.02;
     }
 }
-/*Kaktusar: Varje kaktus ska ha 2 cl mineralvatten/dag, oberoende av kaktusens storlek.*/

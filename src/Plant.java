@@ -1,4 +1,4 @@
-public abstract class Plant implements Waterable{
+public abstract class Plant implements Waterable {
 
     private NutrientFluid typeOfNutrientFluid;
     private String name;
